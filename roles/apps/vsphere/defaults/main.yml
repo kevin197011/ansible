@@ -1,0 +1,69 @@
+---
+# example
+# vsphere_env: dev
+# vsphere_vm_name: ops-node
+# vsphere_vm_cpus: 2
+# vsphere_vm_mem: 1024
+# vsphere_vm_data_disk_size: 50
+# vsphere_vm_dns1: 8.8.8.8
+# vsphere_vm_dns2: 1.1.1.1
+# vsphere_vm_folder: /
+
+# vsphere_vms:
+#   - vsphere_vm_name: "{{ vsphere_vm_name }}"
+#     vsphere_vm_ip: 172.16.1.10
+#     vsphere_host: 172.16.1.101
+
+#   - vsphere_vm_name: "{{ vsphere_vm_name }}"
+#     vsphere_vm_ip: 172.16.1.11
+#     vsphere_host: 172.16.1.102
+
+vsphere_datacenter: Datacenter
+
+vsphere_auth:
+  dev:
+    hostname: 172.16.1.200
+    username: administrator@vsphere.local
+    password: xxxxxx
+  pro:
+    hostname: 172.16.4.200
+    username: administrator@vsphere.local
+    password: xxxxxx
+
+vsphere_template:
+  dev: centos-7-base-dev
+  pro: centos-7-base-pro
+
+vsphere_hosts:
+  dev:
+    172.16.1.101:
+      datastore: datastore101-2
+      networks:
+        interface: Dev-Network
+        network: 172.16.1.0/24
+        gateway: 172.16.1.1
+    172.16.1.102:
+      datastore: datastore102-2
+      networks:
+        interface: Dev-Network
+        network: 172.16.1.0/24
+        gateway: 172.16.1.1
+  pro:
+    172.16.4.101:
+      datastore: datastore101-2
+      networks:
+        interface: Pro-Network
+        network: 172.16.4.0/24
+        gateway: 172.16.4.1
+    172.16.4.102:
+      datastore: datastore102-2
+      networks:
+        interface: Pro-Network
+        network: 172.16.4.0/24
+        gateway: 172.16.4.1
+
+
+
+
+
+

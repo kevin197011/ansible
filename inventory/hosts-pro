@@ -1,0 +1,11 @@
+[all:vars]
+env_name=pro
+
+[k8s_cluster_A]
+k8s-node-01 ansible_host=172.16.4.21
+k8s-node-02 ansible_host=172.16.4.22
+k8s-node-03 ansible_host=172.16.4.23
+k8s-node-04 ansible_host=172.16.4.24
+k8s-node-05 ansible_host=172.16.4.25
+k8s-node-06 ansible_host=172.16.4.26
+k8s-node-07 ansible_host=172.16.4.27

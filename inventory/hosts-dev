@@ -1,0 +1,13 @@
+[all:vars]
+env_name=dev
+
+[k8s_cluster_A]
+k8s-node-01 ansible_host=172.16.1.21
+k8s-node-02 ansible_host=172.16.1.22
+k8s-node-03 ansible_host=172.16.1.23
+k8s-node-04 ansible_host=172.16.1.24
+k8s-node-05 ansible_host=172.16.1.25
+k8s-node-06 ansible_host=172.16.1.26
+k8s-node-07 ansible_host=172.16.1.27
+
+

@@ -1,0 +1,25 @@
+---
+# First import secrets variables
+- name: import all-secrets
+  import_playbook: all-secrets.yml
+  tags:
+    - always
+
+- name: import vsphere.yml
+  import_playbook: playbook/vsphere.yml
+  tags:
+    - vsphere
+  vars:
+    vsphere_env: dev
+    vsphere_vm_name: k8s-node-a
+    vsphere_vm_cpus: 8
+    vsphere_vm_mem: 32768
+    vsphere_vm_data_disk_size: 200
+    vsphere_vm_dns1: 8.8.8.8
+    vsphere_vm_dns2: 1.1.1.1
+    vsphere_vm_folder: /k8s
+    vsphere_vms:
+      - vsphere_vm_ip: 172.16.1.21
+        vsphere_host: 172.16.1.101
+      - vsphere_vm_ip: 172.16.1.22
+        vsphere_host: 172.16.1.102

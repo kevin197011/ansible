@@ -1,0 +1,22 @@
+---
+# First import secrets variables
+- name: import all-secrets
+  import_playbook: all-secrets.yml
+  tags:
+    - always
+
+- name: import mysql-cluster.yml
+  import_playbook: playbook/mysql-cluster.yml
+  tags:
+    - mysql-cluster
+
+- name: import redis-cluster.yml
+  import_playbook: playbook/redis-cluster.yml
+  tags:
+    - redis-cluster
+
+- name: import consul-cluster.yml
+  import_playbook: playbook/consul-cluster.yml
+  tags:
+    - consul-cluster
+ 

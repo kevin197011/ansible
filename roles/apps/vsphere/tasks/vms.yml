@@ -1,0 +1,6 @@
+---   
+- name: Create vms
+  include_tasks: create.yml
+  loop: "{{ vsphere_vms }}"
+  loop_control:
+    loop_var: vmconfig

@@ -1,0 +1,19 @@
+---
+kind: pipeline
+type: exec
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: initial
+  commands:
+  # - bash tools/init.sh
+  - echo "init..."
+
+- name: deploy
+  commands:
+  - ansible-playbook site.yml --limit k8s_cluster_A --tags k8s --diff
+

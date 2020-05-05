@@ -1,0 +1,45 @@
+---
+- name: Set vm variable
+  set_fact:
+    vm_hostname: "{{ vsphere_vm_name | capitalize }}-{{ lookup('password', '/dev/null chars=ascii_letters,digits') | to_uuid | regex_replace('-.*', '') }}"
+    vm_ip: "{{ vmconfig.vsphere_vm_ip }}"
+    vm_esxi_hostname: "{{ vmconfig.vsphere_host }}"
+
+- name: Create vm from template
+  vmware_guest:
+    hostname: "{{ vsphere_auth[vsphere_env]['hostname'] }}"
+    username: "{{ vsphere_auth[vsphere_env]['username'] }}"
+    password: "{{ vsphere_auth[vsphere_env]['password'] }}"
+    validate_certs: no
+    folder: "{{ vsphere_vm_folder }}"
+    datacenter: "{{ vsphere_datacenter }}"
+    name: "{{ vm_hostname }}"
+    state: poweredon
+    esxi_hostname: "{{ vm_esxi_hostname }}"
+    template: "{{ vsphere_template[vsphere_env] }}"
+    disk:
+      - size_gb: 20
+        type: eagerzeroedthick    
+        datastore: "{{ vsphere_hosts[vsphere_env][vm_esxi_hostname]['datastore'] }}"
+      - size_gb: "{{ vsphere_vm_data_disk_size }}"
+        type: eagerzeroedthick
+        datastore: "{{ vsphere_hosts[vsphere_env][vm_esxi_hostname]['datastore'] }}"
+    hardware:
+      hotadd_cpu: true
+      hotremove_cpu: true
+      hotadd_memory: true
+      memory_mb: "{{ vsphere_vm_mem }}"
+      num_cpus: "{{ vsphere_vm_cpus }}"
+      scsi: lsilogic
+    networks:
+      - name: "{{ vsphere_hosts[vsphere_env][vm_esxi_hostname]['networks']['interface'] }}"
+        device_type: vmxnet3
+        ip: "{{ vm_ip }}"
+        netmask: 255.255.255.0
+        gateway: "{{ vsphere_hosts[vsphere_env][vm_esxi_hostname]['networks']['gateway'] }}"
+    customization:
+      hostname: "{{ vm_hostname }}"
+      dns_servers:
+        - "{{ vsphere_vm_dns1 }}"
+        - "{{ vsphere_vm_dns2 }}"
+

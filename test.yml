@@ -1,0 +1,11 @@
+---
+# First import secrets variables
+- name: import all-secrets
+  import_playbook: all-secrets.yml
+  tags:
+    - always
+
+- name: import playbook/test.yml
+  import_playbook: playbook/test.yml
+  tags:
+    - test
