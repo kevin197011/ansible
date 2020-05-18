@@ -1,0 +1,45 @@
+---
+- name: Create git deploy dir
+  file:
+    path: "{{ docker_compose_deploy_path }}"
+    state: directory
+    mode: '0755'
+
+- name: Create tmp key
+  copy:
+    content: "{{ secrets_ansible_deploy_git_key }}"
+    dest: "/tmp/docker-compose-key"
+    mode: "0600"
+  no_log: True
+
+- name: Git pull docker-compose repo
+  git:
+    repo: "{{ docker_compose_git_url }}"
+    dest: "{{ docker_compose_deploy_path }}"
+    accept_hostkey: yes
+    key_file: "/tmp/docker-compose-key"
+    version: master
+
+- name: Remove key
+  file:
+    path: "/tmp/docker-compose-key"
+    state: absent
+
+- name: Config app systemd file
+  template:
+    src: usr/lib/systemd/system/docker-compose.service.j2
+    dest: /usr/lib/systemd/system/{{ docker_compose_app_name }}.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload systemd service
+  systemd:
+    daemon_reload: yes
+
+- name: Restart docker_compose_app
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: "{{ docker_compose_app_name }}"
+    enabled: yes

@@ -1,0 +1,30 @@
+---
+- name: Setting hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+- name: Stop firewalld
+  systemd:
+    state: stopped
+    daemon_reload: yes
+    name: firewalld
+    enabled: no
+
+- name: Stop iptables
+  systemd:
+    state: stopped
+    daemon_reload: yes
+    name: iptables
+    enabled: no
+  ignore_errors: yes
+
+- name: Yum install base packages
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  loop: "{{ bind_base_packages }}"

@@ -1,0 +1,28 @@
+---
+- name: Start docker_compose_app
+  systemd:
+    state: started
+    daemon_reload: yes
+    name: "{{ docker_compose_app_name }}"
+    enabled: yes
+
+- name: Stop docker_compose_app
+  systemd:
+    state: stopped
+    daemon_reload: yes
+    name: "{{ docker_compose_app_name }}"
+    enabled: yes
+
+- name: Reload docker_compose_app
+  systemd:
+    state: reloaded
+    daemon_reload: yes
+    name: "{{ docker_compose_app_name }}"
+    enabled: yes
+
+- name: Restart docker_compose_app
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: "{{ docker_compose_app_name }}"
+    enabled: yes

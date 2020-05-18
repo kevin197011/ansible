@@ -1,0 +1,23 @@
+---
+- name: Config bind named.conf
+  template:
+    src: named.conf.j2
+    dest: /etc/named.conf
+    group: named
+    owner: root
+    mode: '0640'
+  register: bind_status
+  
+- name: Config bind zone file
+  include_tasks: subconfig.yml
+  loop: "{{ lookup('dict', bind_zones) }}"
+  loop_control:
+    loop_var: subconfig
+
+- name: Restart named
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: named
+    enabled: yes
+  when: bind_status.changed

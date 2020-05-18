@@ -5,4 +5,4 @@
   become_user: root
   gather_facts: no
   roles:
-    - { name: "vsphere", role: "apps/vsphere", tags: "vsphere" }
+    - { name: "vsphere", role: "system/vsphere", tags: "vsphere" }

@@ -1,0 +1,28 @@
+---
+- name: Start named
+  systemd:
+    state: started
+    daemon_reload: yes
+    name: named
+    enabled: yes
+
+- name: Stop named
+  systemd:
+    state: stopped
+    daemon_reload: yes
+    name: named
+    enabled: yes
+
+- name: Reload named
+  systemd:
+    state: reloaded
+    daemon_reload: yes
+    name: named
+    enabled: yes
+
+- name: Restart named
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: named
+    enabled: yes

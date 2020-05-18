@@ -1,0 +1,24 @@
+---
+bind_base_packages:
+  # - bind-chroot
+  - bind
+  - bind-utils
+
+bind_serial_number: "{{ ansible_date_time.epoch }}"
+
+bind_zones:
+  devops.com:
+    - { name: "console", type: "A", value: "1.1.1.1" }
+    - { name: "gateway", type: "A", value: "1.1.1.2" }
+    - { name: "api", type: "A", value: "1.1.1.3" }
+    - { name: "workflow", type: "A", value: "1.1.1.4" }
+  dev.com:
+    - { name: "www", type: "A", value: "2.1.1.1" }
+    - { name: "h5", type: "A", value: "2.1.1.2" }
+    - { name: "api", type: "A", value: "2.1.1.3" }
+    - { name: "admin", type: "A", value: "2.1.1.4" }
+
+
+
+
+

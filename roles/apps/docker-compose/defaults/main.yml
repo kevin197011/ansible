@@ -1,0 +1,9 @@
+---
+# default name
+docker_compose_app_name: app
+
+# default git repo
+docker_compose_git_url: https://github.com/kevin197011/docker-compose.git
+
+# default deploy path
+docker_compose_deploy_path: /data/docker-compose

@@ -1,0 +1,15 @@
+$TTL 1D
+@    IN SOA ns1.devops.com. dns1.devops.com. (
+                                        {{ bind_serial_number }}       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H      ; minimum
+                                        )
+; dns records
+@      IN  NS      ns1.devops.com.
+ns1    IN  A       172.16.1.250
+dns1   IN  A       172.16.1.250
+{% for i in subconfig_value %}
+{{ i['name'] }}    IN  {{ i['type'] }}       {{ i['value'] }}
+{% endfor %}

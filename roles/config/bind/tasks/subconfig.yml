@@ -1,0 +1,13 @@
+---
+- name: Set subconfig_value
+  set_fact:
+    subconfig_value: "{{ subconfig.value }}"
+
+- name: Config bind zone file
+  template:
+    src: "domain.com.zone.j2"
+    dest: "/var/named/{{ subconfig.key }}.zone"
+    group: named
+    owner: root
+    mode: '0640'
+  register: bind_status
