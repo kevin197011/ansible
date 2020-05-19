@@ -20,7 +20,7 @@
 
 - name: Debug docker version
   debug:
-    msg: register_docker_version.stdout_lines
+    msg: "{{ register_docker_version.stdout_lines }}"
 
 # - name: Upgrade pip
 #   pip:
@@ -39,4 +39,4 @@
 
 - name: Debug docker compose version
   debug:
-    msg: register_docker_compose_version.stdout_lines
+    msg: "{{ register_docker_compose_version.stdout_lines }}"
