@@ -1,0 +1,13 @@
+[Unit]
+Description={{ docker_compose_app_name }} service
+After=network.target docker.service
+
+[Service]
+Type=simple
+WorkingDirectory={{ docker_compose_deploy_path }}/{{ docker_compose_app_name }}
+ExecStart=/usr/bin/docker-compose -f {{ docker_compose_deploy_path }}/{{ docker_compose_app_name }}/docker-compose.yml up
+ExecStop=/usr/bin/docker-compose -f {{ docker_compose_deploy_path }}/{{ docker_compose_app_name }}/docker-compose.yml down
+# Restart=always
+
+[Install]
+WantedBy=multi-user.target

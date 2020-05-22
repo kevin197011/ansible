@@ -27,7 +27,7 @@
 
 - name: Config app systemd file
   template:
-    src: usr/lib/systemd/system/docker-compose.service.j2
+    src: docker-compose.service.j2
     dest: /usr/lib/systemd/system/{{ docker_compose_app_name }}.service
     owner: root
     group: root

@@ -61,9 +61,3 @@ vsphere_hosts:
         interface: Pro-Network
         network: 172.16.4.0/24
         gateway: 172.16.4.1
-
-
-
-
-
-
