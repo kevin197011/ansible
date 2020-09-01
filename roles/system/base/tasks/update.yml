@@ -1,0 +1,6 @@
+---
+- name: Update all package exclude kernel
+  shell:
+    yum update --exclude=kernel -y
+  args:
+    warn: no

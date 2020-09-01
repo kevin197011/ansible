@@ -1,0 +1,39 @@
+---
+base_disable_service_list:
+  - firewalld
+  - salt-minion
+  - rpcbind
+  - NetworkManager
+  - rpcbind.socket
+  - postfix
+
+base_depend_packages:
+  - lrzsz
+  - nc
+  - gcc
+  - gcc-c++
+  - libmnl*
+  - libnftnl*
+  - bison*
+  - flex*
+  - libnetfilter*
+  - libnfnetlink*
+  - epel-release
+  - jq
+  - deltarpm
+  - wget
+  - net-tools
+  - traceroute
+  - yum-utils
+  - telnet
+  - socat
+  - conntrack
+  - ipset
+  - ipvsadm
+  - logrotate
+  - bash-completion
+  - sysstat
+  - libseccomp
+  - linux-firmware
+
+base_kernel_url: ""

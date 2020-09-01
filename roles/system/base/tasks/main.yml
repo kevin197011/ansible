@@ -1,0 +1,7 @@
+---
+- name: Import check
+  import_tasks: check.yml
+
+- name: Import run
+  import_tasks: run.yml
+  when: not stat_result.stat.exists

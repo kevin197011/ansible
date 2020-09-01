@@ -1,0 +1,9 @@
+---
+- name: Create dir /var/run/ansible
+  file:
+    path: /var/run/ansible
+    state: directory
+
+- name: Tag run complete
+  file:
+    path: /var/run/ansible/.system.base.role
