@@ -1,7 +1,4 @@
 ---
-- name: Import check
-  import_tasks: check.yml
-
 - name: Import selinux
   import_tasks: selinux.yml
 
