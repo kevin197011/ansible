@@ -4,6 +4,7 @@
     path: /var/run/ansible
     state: directory
 
-- name: Tag run complete
+- name: Touch file tag if run complete
   file:
     path: /var/run/ansible/.system.base.role
+    status: touch
