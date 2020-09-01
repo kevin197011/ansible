@@ -18,10 +18,10 @@
   import_tasks: update.yml
 
 - name: Import limits
-  import_tasks: update.yml
+  import_tasks: limits.yml
 
 - name: Import sysctl
-  import_tasks: update.yml
+  import_tasks: sysctl.yml
 
 - name: Import kernel
   import_tasks: kernel.yml
