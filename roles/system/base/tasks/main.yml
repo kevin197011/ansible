@@ -4,4 +4,4 @@
 
 - name: Import run
   import_tasks: run.yml
-  when: not stat_result.stat.exists
+  when: not base_run_status.stat.exists
