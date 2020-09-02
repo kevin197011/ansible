@@ -39,3 +39,9 @@
     dest: "/tmp/{{ etcd_package_url | basename }}"
     mode: '0755'
     force: yes
+
+- name: Unarchive etcd
+  unarchive:
+    src: "/tmp/{{ etcd_package_url | basename }}"
+    dest: /usr/local/bin
+    remote_src: yes
