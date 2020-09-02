@@ -2,7 +2,7 @@
   "CN": "etcd",
   "hosts": [
     "127.0.0.1",
-{% for ih in groups['etcd'] %}
+{% for i in groups['etcd'] %}
     "{{ hostvars[i].ansible_host }}",
 {% endfor %}
   ],
