@@ -8,19 +8,19 @@
 
 - name: Generate ca-config.json
   template:
-    src: ca-config.json.j2
+    src: json/ca-config.json.j2
     dest: "{{ etcd_cfssl_generate_dir }}/ca-config.json"
   delegate_to: localhost
 
 - name: Generate ca-csr.json
   template:
-    src: ca-csr.json.j2
+    src: json/ca-csr.json.j2
     dest: "{{ etcd_cfssl_generate_dir }}/ca-csr.json"
   delegate_to: localhost
 
 - name: Generate etcd-csr.json
   template:
-    src: etcd-csr.json.j2
+    src: json/etcd-csr.json.j2
     dest: "{{ etcd_cfssl_generate_dir }}/etcd-csr.json"
   delegate_to: localhost
 

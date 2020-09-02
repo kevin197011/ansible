@@ -1,2 +1,11 @@
 ---
+etcd_version: "v3.4.13"
+
 etcd_cfssl_generate_dir: "/opt/k8s"
+
+# etcd ssl
+etcd_ssl_dir: "/etc/ssl/etcd"
+# etcd data
+etcd_data_dir: "/var/lib/etcd"
+
+etcd_package_url: "https://github.com/etcd-io/etcd/releases/download/{{ etcd_version }}/etcd-{{ etcd_version }}-linux-amd64.tar.gz"
