@@ -3,6 +3,8 @@ etcd_version: v3.4.13
 
 etcd_cfssl_generate_dir: "/opt/k8s/ssl/"
 
+etcd_cluster_name: etcd-cluster-01
+
 etcd_user: etcd
 # etcd ssl
 etcd_ssl_dir: "/etc/ssl/etcd"

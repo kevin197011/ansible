@@ -1,8 +1,8 @@
 {
   "CN": "etcd",
   "hosts": [
-{% for i in groups['etcd'] %}
-    "{{ hostvars[i].ansible_host }}",
+{% for host in groups['etcd-cluster'] %}
+    "{{ hostvars[host].ansible_host }}",
 {% endfor %}
     "127.0.0.1"
   ],

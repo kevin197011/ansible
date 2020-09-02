@@ -46,3 +46,37 @@
     dest: /usr/local/bin
     extra_opts: [--strip-components=1]
     remote_src: yes
+
+- name: Config /etc/etcd/config.yml
+  template:
+    src: etc/etcd/config.yml.j2
+    dest: /etc/etcd/config.yml
+    owner: "{{ etcd_user }}"
+    group: "{{ etcd_user }}"
+    mode: '0644'
+
+- name: Config /lib/systemd/system/etcd.service
+  template:
+    src: lib/systemd/system/etcd.service.j2
+    dest: /lib/systemd/system/etcd.service
+
+- name: Reload etcd.service
+  systemd:
+    state: reloaded
+    daemon_reload: yes
+
+- name: Restart etcd
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: etcd
+    enabled: yes
+
+- name: Register etcd run status
+  shell: |
+    systemctl status etcd.service
+  register: register_etcd_run_status
+
+- name: Debug etcd run status
+  debug: 
+    msg: "{{ register_etcd_run_status }}"

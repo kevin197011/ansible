@@ -1,0 +1,9 @@
+---
+- name: Import cfssl
+  import_tasks: cfssl.yml
+
+- name: Import install
+  import_tasks: install.yml
+
+- name: Import state
+  import_tasks: state.yml
