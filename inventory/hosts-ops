@@ -2,5 +2,9 @@
 [all:vars]
 env_name=ops
 
-[ops]
+# [ops]
+# ops-node-01 ansible_host=localhost
+
+
+[etcd]
 ops-node-01 ansible_host=localhost

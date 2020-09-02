@@ -6,4 +6,4 @@
 
 - name: Debug cfssl version
   debug:
-    msg: "{{ cfssl_version_status }}"
+    msg: "{{ cfssl_version_status.stdout_lines }}"

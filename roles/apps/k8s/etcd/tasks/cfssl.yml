@@ -1,0 +1,27 @@
+---
+- name: Create k8s dir
+  file:
+    path: /opt/k8s
+    state: directory
+    mode: '0755'
+  delegate_to: localhost
+
+- name: Generate etcd-csr.json
+  template:
+    src: etcd-csr.json.j2
+    dest: /tmp/etcd-csr.json
+  delegate_to: localhost
+
+- name: Generate cfssl key
+  shell: |
+    cd /tmp/
+    cfssl gencert \
+    -ca=ca.pem \
+    -ca-key=ca-key.pem \
+    -config=ca-config.json \
+    -profile=kubernetes \
+    etcd-csr.json | cfssljson -bare etcd
+  args:
+    warn: no
+  delegate_to: localhost
+

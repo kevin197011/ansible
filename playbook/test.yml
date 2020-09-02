@@ -5,4 +5,4 @@
   become_user: root
   gather_facts: no
   roles:
-    - { name: "cfssl", role: "tools/cfssl", tags: "cfssl" }
+    - { name: "test", role: "apps/k8s/etcd", tags: "test" }

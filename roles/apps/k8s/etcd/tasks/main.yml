@@ -1,6 +1,6 @@
 ---
-- name: Import install
-  import_tasks: install.yml
+- name: Import cfssl
+  import_tasks: cfssl.yml
 
 - name: Import config
   import_tasks: config.yml
