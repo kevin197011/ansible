@@ -1,1 +1,6 @@
 # DevOps test host file
+[all:vars]
+env_name=ops
+
+[ops]
+ops-node-01 ansible_host=127.0.0.1

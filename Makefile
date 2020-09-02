@@ -21,7 +21,7 @@ check:
 	ansible-playbook -i inventory/hosts-pro site.yml  --limit $(hosts) --tags $(tags) --diff --check
 
 ops:
-	ansible-playbook -i inventory/hosts-ops site.yml --limit $(hosts) --tags $(tags) --diff
+	ansible-playbook -i inventory/hosts-ops test.yml --diff
 
 dev:
 	ansible-playbook -i inventory/hosts-dev site.yml --limit $(hosts) --tags $(tags) --diff
