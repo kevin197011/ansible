@@ -8,3 +8,6 @@
   file:
     path: /var/run/ansible/.system.base.run
     status: touch
+    mode: "0755"
+    owner: root
+    group: root
