@@ -1,5 +1,5 @@
 ---
-- name: Download and install cfssl tool
+- name: Download and install cfssl tools
   get_url:
     url: "{{ cfssl_package_url }}{{ item }}_linux-amd64"
     dest: "/usr/local/bin/{{ item }}"
