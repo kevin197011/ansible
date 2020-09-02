@@ -14,7 +14,7 @@
 
 - name: Generate cfssl key
   shell: |
-    cd "{{ etcd_cfssl_generate_dir }}"
+    cd "{{ etcd_cfssl_generate_dir }}" && \
     cfssl gencert \
     -ca=ca.pem \
     -ca-key=ca-key.pem \
