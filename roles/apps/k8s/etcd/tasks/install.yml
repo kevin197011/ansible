@@ -32,3 +32,10 @@
     - etcd.csr
     - etcd-key.pem
     - etcd.pem
+
+- name: Download etcd
+  get_url:
+    url: "{{ etcd_package_url }}"
+    dest: "/tmp/{{ etcd_package_url | basename }}"
+    mode: '0755'
+    force: yes
