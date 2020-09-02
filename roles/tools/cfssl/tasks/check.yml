@@ -1,5 +1,5 @@
 ---
-- name: Register etcd install status
+- name: Register cfssl install status
   stat:
     path: /var/run/ansible/.tools.cfssl.run
-  register: register_etcd_status
+  register: register_cfssl_status
