@@ -5,5 +5,8 @@
 - name: Import install
   import_tasks: install.yml
 
+- name: Import debug
+  import_tasks: debug.yml
+
 - name: Import state
   import_tasks: state.yml

@@ -1,0 +1,28 @@
+---
+- name: Register etcd run status
+  shell: |
+    systemctl status etcd.service
+  register: register_etcd_run_status
+
+- name: Debug etcd run status
+  debug: 
+    msg: "{{ register_etcd_run_status.stdout_lines }}"
+
+- name: Register etcd endpoint health
+  shell: |
+    etcdctl --write-out=table endpoint health
+  register: register_etcd_endpoint_health
+
+- name: Debug etcd endpoint health
+  debug: 
+    msg: "{{ register_etcd_endpoint_health.stdout_lines }}"
+
+- name: Register etcd endpoint status
+  shell: |
+    etcdctl --write-out=table endpoint status
+  register: register_etcd_endpoint_status
+
+- name: Debug etcd endpoint status
+  debug: 
+    msg: "{{ register_etcd_endpoint_status.stdout_lines }}"
+

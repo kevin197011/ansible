@@ -82,12 +82,3 @@
     daemon_reload: yes
     name: etcd
     enabled: yes
-
-- name: Register etcd run status
-  shell: |
-    systemctl status etcd.service
-  register: register_etcd_run_status
-
-- name: Debug etcd run status
-  debug: 
-    msg: "{{ register_etcd_run_status.stdout_lines }}"
