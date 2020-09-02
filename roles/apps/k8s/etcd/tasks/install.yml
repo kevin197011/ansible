@@ -47,6 +47,15 @@
     extra_opts: [--strip-components=1]
     remote_src: yes
 
+- name: Create dir /etc/etcd
+  file:
+    path: /etc/etcd
+    state: directory
+    mode: '0755'
+    owner: "{{ etcd_user }}"
+    group: "{{ etcd_user }}"
+    
+
 - name: Config /etc/etcd/config.yml
   template:
     src: etc/etcd/config.yml.j2
