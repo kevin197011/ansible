@@ -12,6 +12,12 @@
     dest: "{{ etcd_cfssl_generate_dir }}/etcd-csr.json"
   delegate_to: localhost
 
+- name: Generate ca-config.json
+  template:
+    src: ca-config.json.j2
+    dest: "{{ etcd_cfssl_generate_dir }}/ca-config.json"
+  delegate_to: localhost
+
 - name: Generate cfssl key
   shell: |
     cd "{{ etcd_cfssl_generate_dir }}" && \
