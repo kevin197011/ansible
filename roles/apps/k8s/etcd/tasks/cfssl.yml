@@ -6,28 +6,36 @@
     mode: '0755'
   delegate_to: localhost
 
-- name: Generate etcd-csr.json
-  template:
-    src: etcd-csr.json.j2
-    dest: "{{ etcd_cfssl_generate_dir }}/etcd-csr.json"
-  delegate_to: localhost
-
 - name: Generate ca-config.json
   template:
     src: ca-config.json.j2
     dest: "{{ etcd_cfssl_generate_dir }}/ca-config.json"
   delegate_to: localhost
 
-- name: Generate cfssl key
+- name: Generate ca-csr.json
+  template:
+    src: ca-csr.json.j2
+    dest: "{{ etcd_cfssl_generate_dir }}/ca-csr.json"
+  delegate_to: localhost
+
+- name: Generate etcd-csr.json
+  template:
+    src: etcd-csr.json.j2
+    dest: "{{ etcd_cfssl_generate_dir }}/etcd-csr.json"
+  delegate_to: localhost
+
+- name: Generate ca certificate
   shell: |
     cd "{{ etcd_cfssl_generate_dir }}" && \
-    cfssl gencert \
-    -ca=ca.pem \
-    -ca-key=ca-key.pem \
-    -config=ca-config.json \
-    -profile=kubernetes \
-    etcd-csr.json | cfssljson -bare etcd
+    cfssl gencert -initca ca-csr.json | cfssljson -bare ca
   args:
     warn: no
   delegate_to: localhost
 
+- name: Generate etcd certificate
+  shell: |
+    cd "{{ etcd_cfssl_generate_dir }}" && \
+    cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd etcd-csr.json | cfssljson -bare etcd
+  args:
+    warn: no
+  delegate_to: localhost
