@@ -1,0 +1,34 @@
+---
+- name: Add group etcd
+  group:
+    name: "{{ etcd_user }}"
+    state: present
+
+- name: Add user etcd
+  user:
+    name: "{{ etcd_user }}"
+    shell: /sbin/nologin
+    group: "{{ etcd_user }}"
+
+- name: Create etcd ssl and data dir
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ etcd_user }}"
+    group: "{{ etcd_user }}"
+  loop:
+    - "{{ etcd_ssl_dir }}"
+    - "{{ etcd_data_dir }}"
+
+- name: Copy ssl file to etcd host
+  copy:
+    src: "{{ etcd_cfssl_generate_dir }}/{{ item }}"
+    dest: "{{ etcd_ssl_dir }}/{{ item }}"
+    owner: "{{ etcd_user }}"
+    group: "{{ etcd_user }}"
+    mode: '0644'
+  loop:
+    - etcd.csr
+    - etcd-key.pem
+    - etcd.pem

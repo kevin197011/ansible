@@ -1,6 +1,11 @@
 ---
+- name: Import check
+  import_tasks: check.yml
+
 - name: Import cfssl
   import_tasks: cfssl.yml
+  when: not register_etcd_status.stat.exists
 
-# - name: Import config
-#   import_tasks: config.yml
+- name: Import install
+  import_tasks: install.yml
+  when: not register_etcd_status.stat.exists
