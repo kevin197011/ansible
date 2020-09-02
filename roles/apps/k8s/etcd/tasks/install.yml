@@ -90,4 +90,4 @@
 
 - name: Debug etcd run status
   debug: 
-    msg: "{{ register_etcd_run_status }}"
+    msg: "{{ register_etcd_run_status.stdout_lines }}"
