@@ -74,7 +74,6 @@
 
 - name: Reload etcd.service
   systemd:
-    state: reloaded
     daemon_reload: yes
 
 - name: Restart etcd
