@@ -1,0 +1,6 @@
+---
+- name: Import install
+  import_tasks: install.yml
+
+- name: Import state
+  import_tasks: state.yml

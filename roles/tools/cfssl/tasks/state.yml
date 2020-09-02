@@ -1,0 +1,10 @@
+---
+- name: Create dir /var/run/ansible
+  file:
+    path: /var/run/ansible
+    state: directory
+
+- name: Create file tag if run complete
+  file:
+    path: /var/run/ansible/.tools.cfssl.run
+    state: touch

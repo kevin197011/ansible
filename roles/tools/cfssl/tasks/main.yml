@@ -1,6 +1,7 @@
 ---
-- name: Import install
-  import_tasks: install.yml
-
 - name: Import check
   import_tasks: check.yml
+
+- name: Import run
+  import_tasks: run.yml
+  when: not register_etcd_status.stat.exists

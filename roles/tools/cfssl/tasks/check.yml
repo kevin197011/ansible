@@ -1,9 +1,5 @@
 ---
-- name: Register cfssl version
-  shell: |
-    cfssl version
-  register: cfssl_version_status
-
-- name: Debug cfssl version
-  debug:
-    msg: "{{ cfssl_version_status.stdout_lines }}"
+- name: Register etcd install status
+  stat:
+    path: /var/run/ansible/.tools.cfssl.run
+  register: register_etcd_status
