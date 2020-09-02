@@ -20,7 +20,8 @@ vms:
 check:
 	ansible-playbook -i inventory/hosts-pro site.yml  --limit $(hosts) --tags $(tags) --diff --check
 
-ops:
+# test
+t:
 	ansible-playbook -i inventory/hosts-ops test.yml --diff
 
 dev:
