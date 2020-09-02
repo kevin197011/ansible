@@ -9,3 +9,7 @@
 - name: Import install
   import_tasks: install.yml
   when: not register_etcd_status.stat.exists
+
+- name: Import tag
+  import_tasks: tag.yml
+  when: not register_etcd_status.stat.exists
