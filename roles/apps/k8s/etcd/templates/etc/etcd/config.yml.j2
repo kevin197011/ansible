@@ -1,7 +1,7 @@
 name: {{ inventory_hostname }}
 data-dir: {{ etcd_data_dir }}
-listen-client-urls: http://{{ ansible_host }}:2379,http://127.0.0.1:2379
-advertise-client-urls: http://{{ ansible_host }}:2379,http://127.0.0.1:2379
+listen-client-urls: http://{{ ansible_host }}:2379
+advertise-client-urls: http://{{ ansible_host }}:2379
 listen-peer-urls: http://{{ ansible_host }}:2380
 initial-advertise-peer-urls: http://{{ ansible_host }}:2380
 initial-cluster: {% for host in groups['etcd_cluster'] %}{{ hostvars[host]['inventory_hostname'] }}=http://{{ hostvars[host]['ansible_host'] }}:2380{% if not loop.last %},{% endif %}{% endfor %} 
