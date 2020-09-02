@@ -1,0 +1,9 @@
+---
+- name: Register cfssl version
+  shell: |
+    cfssl version
+  register: cfssl_version_status
+
+- name: Debug cfssl version
+  debug:
+    msg: "{{ cfssl_version_status }}"

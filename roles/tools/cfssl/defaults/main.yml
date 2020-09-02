@@ -5,3 +5,4 @@ cfssl_package_url: https://pkg.cfssl.org/R1.2/
 cfssl_packages:
   - cfssl
   - cfssljson
+  - cfssl-certinfo
