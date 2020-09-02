@@ -1,4 +1,3 @@
-# dependencies:
+dependencies:
 #   - { name: "base", role: "system/base", tags: "base" }
-
-dependencies: []
+  - { name: "cfssl", role: "tools/cfssl", tags: "cfssl" }
