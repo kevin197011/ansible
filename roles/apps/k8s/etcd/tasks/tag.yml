@@ -8,3 +8,4 @@
   file:
     path: /var/run/ansible/.apps.k8s.etcd.run
     status: touch
+    mode: "0755"
