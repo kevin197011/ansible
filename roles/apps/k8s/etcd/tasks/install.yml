@@ -68,6 +68,9 @@
   template:
     src: lib/systemd/system/etcd.service.j2
     dest: /lib/systemd/system/etcd.service
+    owner: "{{ etcd_user }}"
+    group: "{{ etcd_user }}"
+    mode: '0644'
 
 - name: Reload etcd.service
   systemd:
