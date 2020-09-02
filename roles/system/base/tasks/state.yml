@@ -6,8 +6,5 @@
 
 - name: Create file tag if run complete
   file:
-    path: /var/run/ansible/.apps.k8s.etcd.run
-    statu: touch
-    mode: "0755"
-    owner: root
-    group: root
+    path: /var/run/ansible/.system.base.run
+    state: touch
