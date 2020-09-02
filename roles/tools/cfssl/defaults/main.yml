@@ -1,0 +1,7 @@
+---
+# https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+cfssl_package_url: https://pkg.cfssl.org/R1.2/
+
+cfssl_packages:
+  - cfssl
+  - cfssljson

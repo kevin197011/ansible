@@ -1,0 +1,6 @@
+---
+- name: Install packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ base_depend_packages }}"

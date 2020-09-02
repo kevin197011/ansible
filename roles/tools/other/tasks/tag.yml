@@ -1,0 +1,10 @@
+---
+- name: Create dir /var/run/ansible
+  file:
+    path: /var/run/ansible
+    state: directory
+
+- name: Touch file tag if run complete
+  file:
+    path: /var/run/ansible/.system.base.role
+    status: touch

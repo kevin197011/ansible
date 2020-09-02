@@ -1,0 +1,8 @@
+---
+- name: Download cfssl tool
+  get_url:
+    url: "{{ cfssl_package_url }}{{ item }}__linux-amd64"
+    dest: "/usr/local/bin/{{ item }}"
+    mode: '0755'
+    force: yes
+  loop: "{{ cfssl_packages }}"

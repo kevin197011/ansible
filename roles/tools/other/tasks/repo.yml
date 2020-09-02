@@ -1,0 +1,18 @@
+---
+- name: Delete /etc/yum.repos.d/*
+  shell: |
+    rm -rf /etc/yum.repos.d/*
+  args:
+    warn: no
+
+- name: Config /etc/yum.repos.d/base.repo
+  template:
+    src: etc/yum.repos.d/base.repo.j2
+    dest: /etc/yum.repos.d/base.repo
+
+- name: Update base repo
+  shell: |
+    yum clean all
+    yum repolist
+  args:
+    warn: no

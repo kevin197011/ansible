@@ -1,0 +1,31 @@
+---
+# default version
+docker_version: 3:19.03.5-3.el7
+
+docker_remove_packages:
+  - docker
+  - client
+  - client-latest
+  - common
+  - latest
+  - latest-logrotate
+  - logrotate
+  - engine
+
+docker_depend_packages:
+  - epel-release
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+
+docker_base_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
+docker_compose_depend_packages:
+  - python-devel
+  - python-pip
+
+docker_compose_base_packages:
+  - docker-compose==1.24

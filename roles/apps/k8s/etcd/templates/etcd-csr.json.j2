@@ -1,0 +1,22 @@
+{
+  "CN": "etcd",
+  "hosts": [
+    "127.0.0.1",
+{% for ih in groups['etcd'] %}
+    "{{ hostvars[i].ansible_host }}",
+{% endfor %}
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "CN",
+      "ST": "Manila",
+      "L": "Makati",
+      "O": "etcd",
+      "OU": "etcd"
+    }
+  ]
+}
