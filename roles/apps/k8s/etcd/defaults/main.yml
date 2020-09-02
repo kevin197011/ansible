@@ -1,2 +1,2 @@
 ---
-etcd_package_version: ""
+etcd_cfssl_generate_dir: "/opt/k8s"
