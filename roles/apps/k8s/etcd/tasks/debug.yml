@@ -10,7 +10,9 @@
 
 - name: Register etcd endpoint health
   shell: |
-    etcdctl --write-out=table endpoint health
+    etcdctl --write-out=table \
+    --endpoints={% for host in groups['etcd_cluster'] %}{{ hostvars[host]['ansible_host'] }}:2379{% if not loop.last %},{% endif %}{% endfor %} \
+    endpoint health
   register: register_etcd_endpoint_health
 
 - name: Debug etcd endpoint health
@@ -19,7 +21,9 @@
 
 - name: Register etcd endpoint status
   shell: |
-    etcdctl --write-out=table endpoint status
+    etcdctl --write-out=table \
+    --endpoints={% for host in groups['etcd_cluster'] %}{{ hostvars[host]['ansible_host'] }}:2379{% if not loop.last %},{% endif %}{% endfor %} \
+    endpoint status
   register: register_etcd_endpoint_status
 
 - name: Debug etcd endpoint status
