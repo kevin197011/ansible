@@ -1,5 +1,5 @@
 ---
 - name: Register run status
   stat:
-    path: "/var/run/ansible/.{{ role_name }}.run"
+    path: "/var/run/ansible/.{{ role_name | regex_replace('/', '.') }}.run"
   register: register_run_status
