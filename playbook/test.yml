@@ -5,5 +5,6 @@
   become_user: root
   gather_facts: no
   roles:
-    - { name: "docker", role: "apps/k8s/docker", tags: "docker" }
-    - { name: "test", role: "apps/k8s/etcd", tags: "test" }
+    # - { name: "docker", role: "apps/k8s/docker", tags: "docker" }
+    # - { name: "test", role: "apps/k8s/etcd", tags: "test" }
+    - { name: "test", role: "apps/k8s/k8s-ca", tags: "test" }

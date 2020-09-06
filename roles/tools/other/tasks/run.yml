@@ -23,8 +23,8 @@
 - name: Import kernel
   import_tasks: kernel.yml
 
-- name: Import tag
-  import_tasks: tag.yml
+- name: Import state
+  import_tasks: state.yml
 
 - name: Import reboot
   import_tasks: reboot.yml

@@ -1,0 +1,85 @@
+---
+k8s_json_path: /opt/k8s/json
+k8s_ca_path: /opt/k8s/ca
+
+k8s_ca_expiry: 876000h
+
+k8s_etcd:
+  csr_cn: etcd
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
+
+k8s_apiserver:
+  csr_cn: kubernetes
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
+
+k8s_master:
+  csr_cn: master
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
+
+k8s_worker:
+  csr_cn: worker
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
+
+k8s_kube_proxy:
+  csr_cn: kube_proxy
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
+
+k8s_controller_manager:
+  csr_cn: controller_manager
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
+
+k8s_scheduler_server:
+  csr_cn: scheduler_server
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
+
+k8s_aggregration_server:
+  csr_cn: aggregration_server
+  csr_key_algo: rsa
+  csr_key_size: 2048
+  csr_names_c: PH
+  csr_names_l: Manila
+  csr_names_o: Intech
+  csr_names_ou: IT
+  csr_names_st: Manila
