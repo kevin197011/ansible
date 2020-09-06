@@ -6,5 +6,5 @@
 
 - name: Create file tag if run complete
   file:
-    path: /var/run/ansible/.system.base.run
+    path: /var/run/ansible/.{{ role_name }}
     state: touch

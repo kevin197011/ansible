@@ -1,0 +1,5 @@
+---
+- name: "{{ role_name }} | Register run status"
+  stat:
+    path: "/var/run/ansible/.{{ role_name }}.run"
+  register: register_run_status

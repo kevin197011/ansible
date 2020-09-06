@@ -1,5 +1,5 @@
 ---
-- name: Register etcd install status
+- name: Register run status
   stat:
-    path: /var/run/ansible/.apps.k8s.etcd.run
-  register: register_etcd_status
+    path: /var/run/ansible/.{{ role_name }}
+  register: register_run_status

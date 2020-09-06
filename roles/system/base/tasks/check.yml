@@ -1,5 +1,5 @@
 ---
 - name: Check has it been run
   stat:
-    path: /var/run/ansible/.system.base.run
+    path: /var/run/ansible/.{{ role_name }}
   register: register_base_status

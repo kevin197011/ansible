@@ -1,0 +1,6 @@
+---
+- name: "{{ role_name }} | Import install task"
+  import_tasks: install.yml
+
+- name: "{{ role_name }} | Import config task"
+  import_tasks: config.yml

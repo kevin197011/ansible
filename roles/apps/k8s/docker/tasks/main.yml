@@ -1,6 +1,7 @@
 ---
-- name: Import install
-  import_tasks: install.yml
+- name: "{{ role_name }} | Import check task"
+  import_tasks: check.yml
 
-- name: Import config
-  import_tasks: config.yml
+- name: "{{ role_name }} | Import run task"
+  import_tasks: run.yml
+  when: not register_run_status.stat.exists
