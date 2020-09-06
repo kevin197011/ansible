@@ -28,4 +28,4 @@ docker_compose_depend_packages:
   - python-pip
 
 docker_compose_base_packages:
-  - docker-compose==1.24
+  - docker-compose

@@ -1,7 +1,7 @@
 ---
-- name: "{{ role_name }} | Import check task"
+- name: Import check task
   import_tasks: check.yml
 
-- name: "{{ role_name }} | Import run task"
+- name: Import run task
   import_tasks: run.yml
   when: not register_run_status.stat.exists
