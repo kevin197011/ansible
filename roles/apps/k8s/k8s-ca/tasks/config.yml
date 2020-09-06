@@ -8,7 +8,6 @@
     - "{{ k8s_ca_path }}"
   delegate_to: localhost
   
-
 - name: Config ca csr json 
   template:
     src: "json/{{ item }}"
