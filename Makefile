@@ -1,6 +1,6 @@
-all: pull push
+all: pull p
 
-.PHONY: pull push check dev pro vms
+.PHONY: pull p check dev pro vms
 
 hosts = mysql_cluster
 tags  = mysql-cluster
@@ -8,7 +8,7 @@ tags  = mysql-cluster
 pull:
 	git pull
 
-push:
+p:
 	git pull
 	git add .
 	git commit -m "Update."
