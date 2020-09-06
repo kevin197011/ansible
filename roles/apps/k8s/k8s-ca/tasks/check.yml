@@ -3,6 +3,7 @@
   stat:
     path: "/var/run/ansible/.{{ role_name | regex_replace('/', '.') }}.run"
   register: register_run_status
+  delegate_to: localhost
 
 - name: Debug run status
   debug:
