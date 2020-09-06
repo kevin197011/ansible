@@ -1,5 +1,10 @@
 ---
-- name: Check has it been run
+- name: Register run status
   stat:
-    path: /var/run/ansible/.{{ role_name }}
-  register: register_base_status
+    path: "/var/run/ansible/.{{ role_name | regex_replace('/', '.') }}.run"
+  register: register_run_status
+  delegate_to: localhost
+
+- name: Debug run status
+  debug:
+    msg: "{{ register_run_status.stat.exists }}"

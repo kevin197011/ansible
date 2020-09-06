@@ -1,30 +1,12 @@
 ---
-- name: Import selinux
-  import_tasks: selinux.yml
-
-- name: Import repo
-  import_tasks: repo.yml
-
 - name: Import install
   import_tasks: install.yml
 
-- name: Import disable
-  import_tasks: disable.yml
-
-- name: Import update
-  import_tasks: update.yml
-
-- name: Import limits
-  import_tasks: limits.yml
-
-- name: Import sysctl
-  import_tasks: sysctl.yml
-
-- name: Import kernel
-  import_tasks: kernel.yml
-
-- name: Import state
-  import_tasks: state.yml
+- name: Import config
+  import_tasks: config.yml
 
 - name: Import reboot
   import_tasks: reboot.yml
+
+- name: Import state
+  import_tasks: state.yml

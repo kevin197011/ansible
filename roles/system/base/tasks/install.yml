@@ -1,6 +1,34 @@
 ---
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+- name: Delete /etc/yum.repos.d/*
+  shell: |
+    rm -rf /etc/yum.repos.d/*
+  args:
+    warn: no
+
+- name: Config /etc/yum.repos.d/base.repo
+  template:
+    src: etc/yum.repos.d/base.repo.j2
+    dest: /etc/yum.repos.d/base.repo
+
+- name: Update base repo
+  shell: |
+    yum clean all
+    yum repolist
+  args:
+    warn: no
+
 - name: Install packages
   yum:
     name: "{{ item }}"
     state: latest
   loop: "{{ base_depend_packages }}"
+
+- name: Update all package exclude kernel
+  shell:
+    yum update --exclude=kernel -y
+  args:
+    warn: no

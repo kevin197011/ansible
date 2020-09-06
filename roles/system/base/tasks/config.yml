@@ -1,0 +1,36 @@
+---
+- name: Stop and disable service list
+  service:
+    name: "{{ item }}"
+    state: stopped
+    enabled: False
+  ignore_errors: yes
+  loop: "{{ base_disable_services }}"
+
+- name: Config /etc/security/limits.conf
+  template:
+    src: etc/security/limits.conf.j2
+    dest: /etc/security/limits.conf
+
+- name: Interim executive
+  shell: |
+    ulimit -n 65536
+  args:
+    warn: no
+
+- name: Config /etc/sysctl.conf
+  template:
+    src: etc/sysctl.conf.j2
+    dest: /etc/sysctl.conf
+
+- name: Install kernel package
+  yum:
+    name: "{{ base_kernel_url }}"
+    state: latest
+
+- name: Update config for kernel
+  shell: |
+    grub2-set-default 0
+    grub2-mkconfig -o /boot/grub2/grub.cfg
+  args:
+    warn: no

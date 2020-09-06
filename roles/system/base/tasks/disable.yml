@@ -1,8 +1,0 @@
----
-- name: Stop and disable service list
-  service:
-    name: "{{ item }}"
-    state: stopped
-    enabled: False
-  ignore_errors: yes
-  loop: "{{ base_disable_services }}"
