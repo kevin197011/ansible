@@ -1,5 +1,5 @@
 ---
-- name: Register cfssl install status
+- name: Register run status
   stat:
-    path: /var/run/ansible/.tools.cfssl.run
-  register: register_cfssl_status
+    path: "/var/run/ansible/.{{ role_name }}.run"
+  register: register_run_status

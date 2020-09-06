@@ -4,4 +4,4 @@
 
 - name: Import run
   import_tasks: run.yml
-  when: not register_cfssl_status.stat.exists
+  when: not register_run_status.stat.exists

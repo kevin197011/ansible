@@ -4,3 +4,6 @@
 
 - name: Import config task
   import_tasks: config.yml
+
+- name: Import state task
+  import_tasks: state.yml
