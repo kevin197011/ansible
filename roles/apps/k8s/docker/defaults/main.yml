@@ -24,8 +24,9 @@ docker_base_packages:
   - containerd.io
 
 docker_compose_depend_packages:
-  - python-devel
-  - python-pip
+  - python3
+  - python3-devel
+  - python3-pip
 
 docker_compose_base_packages:
   - docker-compose

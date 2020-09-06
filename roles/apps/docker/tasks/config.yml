@@ -30,6 +30,7 @@
 - name: Pip install docker compose
   pip:
     name: "{{ item }}"
+    executable: pip3
   loop: "{{ docker_compose_base_packages }}"
 
 - name: Register docker compose version
