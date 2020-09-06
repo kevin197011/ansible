@@ -22,6 +22,7 @@ check:
 
 # test
 t:
+	git pull
 	ansible-playbook -i inventory/hosts-ops test.yml --diff
 
 dev:
