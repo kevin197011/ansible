@@ -10,8 +10,5 @@
 - name: Config ca csr json 
   template:
     src: "{{ item }}"
-    dest: "{{ k8s_json_path }}/{{ item | basename | regex_replace('\.j2', '') }}"
-    owner: root
-    group: root
-    mode: '0644'
+    dest: "{{ k8s_json_path }}/{{ item | basename | regex_replace('.j2', '') }}"
   with_items: "{{ lookup('pipe','find {{ role_path }}/templates -type f').split('\n') }}"
