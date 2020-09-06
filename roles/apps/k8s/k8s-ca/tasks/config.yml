@@ -9,6 +9,6 @@
 
 - name: Config ca csr json 
   template:
-    src: "{{ item }}"
+    src: "json/{{ item }}"
     dest: "{{ k8s_json_path }}/{{ item | regex_replace('.j2', '') }}"
-  with_items: "{{ lookup('pipe','find {{ role_path }}/templates -type f').split('\n') | map('basename') | list }}"
+  with_items: "{{ lookup('pipe','find {{ role_path }}/templates/json -type f').split('\n') | map('basename') | list }}"
