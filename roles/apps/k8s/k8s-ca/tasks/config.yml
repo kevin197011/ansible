@@ -11,4 +11,5 @@
   template:
     src: "{{ item | basename }}"
     dest: "{{ k8s_json_path }}/{{ item | basename | regex_replace('.j2', '') }}"
-  with_items: "{{ lookup('pipe','find {{ role_path }}/templates -type f').split('\n') }}"
+  # with_items: "{{ lookup('pipe','find {{ role_path }}/templates -type f').split('\n') }}"
+  with_items: "{{ lookup('pipe','find {{ role_path }}/templates -type f') | map('basename') | list }}"
