@@ -1,0 +1,12 @@
+---
+- name: Import install
+  import_tasks: install.yml
+
+- name: Import config
+  import_tasks: config.yml
+
+- name: Import reboot
+  import_tasks: reboot.yml
+
+- name: Import state
+  import_tasks: state.yml
