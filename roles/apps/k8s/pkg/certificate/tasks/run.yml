@@ -1,0 +1,9 @@
+---
+- name: Import config
+  import_tasks: config.yml
+
+- name: Import make
+  import_tasks: make.yml
+
+- name: Import state
+  import_tasks: state.yml
