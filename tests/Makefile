@@ -1,4 +1,4 @@
 
 
 run:
-	uvicorn main:app --reload
+	uvicorn t:app --reload
