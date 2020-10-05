@@ -33,6 +33,8 @@ pro:
 
 test:
 	@vagrant reload --provision
+ssh:
+	@vagrant ssh
 
 
 
