@@ -15,13 +15,24 @@ Vagrant.configure('2') do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   config.vm.provider 'virtualbox' do |vb|
-    vb.name = 'ansible-master'
-    vb.memory = '8192‬'
-    v.cpus = '4'
+    # vb.name = 'ansible-master'
+    # vb.memory = 2048‬
+    # vb.cpus = 2
+    vb.customize ["modifyvm", :id, "--name", "DevOps"]
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
   end
 
   config.vm.provision 'shell', inline: <<-SHELL
     echo "hello world!"
+    yum install epel-release -y
     yum install ansible -y
   SHELL
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "test.yml"
+    # ansible.vault_password_file = "vault_password_file"
+  end
+
 end

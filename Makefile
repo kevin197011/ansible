@@ -31,6 +31,9 @@ dev:
 pro:
 	ansible-playbook -i inventory/hosts-pro site.yml  --limit $(hosts) --tags $(tags) --diff
 
+test:
+	@vagrant reload --provision
+
 
 
 

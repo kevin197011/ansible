@@ -1,0 +1,21 @@
+---
+- name: Ensure group {{ node_exporter_user }} exists
+  group:
+    name: "{{ node_exporter_user }}"
+    state: present
+
+- name: Add the user {{ node_exporter_user }} in group {{ node_exporter_user }}
+  user:
+    name: "{{ node_exporter_user }}"
+    shell: /sbin/nologin
+    groups: "{{ node_exporter_user }}"
+    append: yes
+
+- name: Unarchive node_exporter
+  unarchive:
+    src: "{{ node_exporter_package }}"
+    dest: /usr/local/bin
+    extra_opts:
+      - --strip-components=1
+    remote_src: yes
+
