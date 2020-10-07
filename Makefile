@@ -36,6 +36,9 @@ test:
 ssh:
 	@vagrant ssh
 
+fmt:
+	ansible-lint
+
 
 
 
