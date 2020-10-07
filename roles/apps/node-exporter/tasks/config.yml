@@ -1,8 +1,8 @@
 ---
-- name: Config /usr/lib/systemd/system/node_exporter.service
+- name: Config /etc/systemd/system/node_exporter.service
   template:
-    src: usr/lib/systemd/system/node_exporter.service.j2
-    dest: /usr/lib/systemd/system/node_exporter.service
+    src: etc/systemd/system/node_exporter.service.j2
+    dest: /etc/systemd/system/node_exporter.service
     owner: root
     group: root
     mode: '0644'

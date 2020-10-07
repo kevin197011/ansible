@@ -1,0 +1,10 @@
+[Unit]
+Description=Redis Exporter
+
+[Service]
+User={{ redis_exporter_user }}
+Group={{ redis_exporter_user }}
+ExecStart=/usr/local/bin/redis_exporter
+
+[Install]
+WantedBy=multi-user.target

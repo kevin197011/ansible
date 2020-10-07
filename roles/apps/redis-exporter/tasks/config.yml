@@ -1,0 +1,20 @@
+---
+- name: Config /etc/systemd/system/redis_exporter.service
+  template:
+    src: etc/systemd/system/redis_exporter.service.j2
+    dest: /etc/systemd/system/redis_exporter.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Daemon reload
+  systemd:
+    daemon_reload: yes
+
+- name: Start redis_exporter
+  systemd:
+    state: started
+    daemon_reload: yes
+    name: redis_exporter
+    enabled: yes
+
