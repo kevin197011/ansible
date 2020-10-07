@@ -8,7 +8,8 @@
   user:
     name: "{{ redis_exporter_user }}"
     shell: /sbin/nologin
-    groups: "{{ redis_exporter_user }}"
+    groups: 
+      - "{{ redis_exporter_user }}"
     append: yes
 
 - name: Unarchive node_exporter

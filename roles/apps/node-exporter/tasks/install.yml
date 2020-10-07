@@ -8,7 +8,8 @@
   user:
     name: "{{ node_exporter_user }}"
     shell: /sbin/nologin
-    groups: "{{ node_exporter_user }}"
+    groups: 
+      - "{{ node_exporter_user }}"
     append: yes
 
 - name: Unarchive node_exporter

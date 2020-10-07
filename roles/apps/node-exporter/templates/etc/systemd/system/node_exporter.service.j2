@@ -5,6 +5,7 @@ Description=Node Exporter
 User={{ node_exporter_user }}
 Group={{ node_exporter_user }}
 ExecStart=/usr/local/bin/node_exporter
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
