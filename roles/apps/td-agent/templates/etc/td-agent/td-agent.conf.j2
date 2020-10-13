@@ -1,0 +1,38 @@
+# /var/log/messages demo
+<source>
+  @type tail
+  refresh_interval 3
+  path /var/log/messages
+  pos_file /var/log/td-agent/messages.log.pos
+  tag k8s.message
+  # format /^(?<time>[^ ]*\s*[^ ]* [^ ]*) (?<host>[^ ]*) (?<ident>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)? *(?<message>.*)$/
+  format /^(?<time>[^ ]*\s*[^ ]* [^ ]*) (?<host>[^ ]*) (?<appname>[^ ]*) (?<message>.*)$/
+  # format none
+  time_format %b %d %H:%M:%S
+</source>
+
+<match k8s.**>
+  @type copy
+
+  # for debug check in /var/log/td-agent/td-agent.log
+  # <store>
+  #   @type stdout
+  # </store>
+
+  <store>
+    @type elasticsearch
+    host 192.168.33.1
+    port 9200
+    logstash_format true 
+    logstash_prefix k8s-messages
+    <buffer>
+      type file
+      path /var/log/td-agent/buffer/messages.buffer
+      chunk_limit_size 250k
+      flush_interval 20s
+      flush_thread_count 1
+      retry_limit 5
+      retry_wait 60
+    </buffer>
+  </store>
+</match>

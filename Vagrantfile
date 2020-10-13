@@ -30,10 +30,10 @@ Vagrant.configure('2') do |config|
     yum install ansible -y
   SHELL
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.verbose = "v"
-    ansible.playbook = "test.yml"
-    # ansible.vault_password_file = "vault_password_file"
-  end
+ # config.vm.provision "ansible" do |ansible|
+ #   ansible.verbose = "v"
+ #   ansible.playbook = "test.yml"
+ #   # ansible.vault_password_file = "vault_password_file"
+ # end
 
 end

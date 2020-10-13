@@ -1,0 +1,8 @@
+---
+- name: Yum install td-agent
+  yum:
+    name: "{{ td_agent_uri }}"
+    state: present
+    update_cache: true
+
+

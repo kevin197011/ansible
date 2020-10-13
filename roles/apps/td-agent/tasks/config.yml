@@ -1,0 +1,28 @@
+---
+- name: Config /usr/lib/systemd/system/td-agent.service
+  template:
+    src: usr/lib/systemd/system/td-agent.service.j2
+    dest: /usr/lib/systemd/system/td-agent.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Daemon reload
+  systemd:
+    daemon_reload: yes
+
+- name: Start td-agent
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: td-agent
+    enabled: yes
+
+# update config but not restart td-agent!
+- name: Config /etc/td-agent/td-agent.conf
+  template:
+    src: etc/td-agent/td-agent.conf.j2
+    dest: /etc/td-agent/td-agent.conf
+    owner: root
+    group: root
+    mode: '0644'
