@@ -19,8 +19,8 @@ Vagrant.configure('2') do |config|
     # vb.memory = 2048‬
     # vb.cpus = 2
     vb.customize ["modifyvm", :id, "--name", "DevOps"]
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
-    vb.customize ["modifyvm", :id, "--cpus", "2"]
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--cpus", "1"]
   end
 
   config.vm.provision 'shell', inline: <<-SHELL
