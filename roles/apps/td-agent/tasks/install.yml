@@ -5,4 +5,10 @@
     state: present
     update_cache: true
 
+- name: Gem install td-agent plugins
+  shell: |
+    td-agent-gem install {{ item }}
+  args:
+    warn: no
+  loop: "{{ td_agent_gem_plugins }}"
 

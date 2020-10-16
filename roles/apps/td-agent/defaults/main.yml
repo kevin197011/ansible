@@ -1,3 +1,5 @@
 ---
 # versions 2/3/4
 td_agent_uri: http://packages.treasuredata.com.s3.amazonaws.com/3/redhat/7/x86_64/td-agent-3.8.0-0.el7.x86_64.rpm
+td_agent_gem_plugins:
+  - https://rubygems.org/downloads/fluent-plugin-elasticsearch-1.5.0.gem
