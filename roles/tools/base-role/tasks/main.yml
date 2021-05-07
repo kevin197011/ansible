@@ -1,0 +1,20 @@
+---
+- name: Import check
+  import_tasks: utils/check.yml
+
+# Debug var
+# - name: Debug register_run_status.stat.exists
+  # ansible.builtin.debug:
+    # msg: "debug..."
+    # var: register_run_status.stat.exists
+
+# Debug var
+- name: Debug register_run_status.stat.exists
+  ansible.builtin.debug:
+    # msg: "debug..."
+    var: register_run_status
+    # msg: "/var/run/ansible/.{{ role_name | regex_replace('/', '.') }}.run"
+
+- name: Import run
+  import_tasks: utils/run.yml
+  when: not register_run_status.stat.exists

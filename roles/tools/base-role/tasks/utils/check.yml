@@ -1,0 +1,7 @@
+---
+- name: Register run status
+  ansible.builtin.stat:
+    path: "/var/run/ansible/.{{ role_name | regex_replace('/', '.') }}.run"
+    # path: "/etc/profile"
+    # path: "/var/run/ansible/.tools.nginx.run"
+  register: register_run_status

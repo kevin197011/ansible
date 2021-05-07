@@ -5,4 +5,4 @@
   become_user: root
   gather_facts: no
   roles:
-    - { name: "test", role: "apps/node-exporter", tags: "test" }
+    - { name: "test", role: "tools/base-role", tags: "test" }

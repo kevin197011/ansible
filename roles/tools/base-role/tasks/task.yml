@@ -1,0 +1,4 @@
+---
+# Schedule tasks
+- name: Import install
+  import_tasks: install.yml

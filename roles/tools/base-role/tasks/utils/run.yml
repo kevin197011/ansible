@@ -1,0 +1,6 @@
+---
+- name: Import task
+  import_tasks: ../task.yml
+
+- name: Import post
+  import_tasks: post.yml
