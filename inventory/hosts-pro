@@ -1,11 +1,51 @@
+# ============================================
+# 生产环境 Inventory
+# ============================================
+
 [all:vars]
 env_name=pro
+cluster_name=k8s-pro
 
-[k8s_cluster_A]
-k8s-node-01 ansible_host=172.16.4.21
-k8s-node-02 ansible_host=172.16.4.22
-k8s-node-03 ansible_host=172.16.4.23
-k8s-node-04 ansible_host=172.16.4.24
-k8s-node-05 ansible_host=172.16.4.25
-k8s-node-06 ansible_host=172.16.4.26
-k8s-node-07 ansible_host=172.16.4.27
+# ============================================
+# Kubernetes 集群 A
+# ============================================
+
+# Master 节点 (控制平面)
+[k8s_masters]
+pro-k8s-master-01 ansible_host=172.16.4.21
+pro-k8s-master-02 ansible_host=172.16.4.22
+pro-k8s-master-03 ansible_host=172.16.4.23
+
+# Worker 节点 (工作负载)
+[k8s_workers]
+pro-k8s-worker-01 ansible_host=172.16.4.24
+pro-k8s-worker-02 ansible_host=172.16.4.25
+pro-k8s-worker-03 ansible_host=172.16.4.26
+pro-k8s-worker-04 ansible_host=172.16.4.27
+
+# etcd 集群 (默认与 master 共用)
+[etcd:children]
+k8s_masters
+
+# K8s 集群 (包含所有节点)
+[k8s_cluster:children]
+k8s_masters
+k8s_workers
+
+# 为兼容旧配置保留的组名
+[k8s_cluster_A:children]
+k8s_cluster
+
+# ============================================
+# 监控节点
+# ============================================
+
+[monitoring]
+# pro-monitor-01 ansible_host=172.16.4.30
+
+# ============================================
+# 基础设施节点
+# ============================================
+
+[infrastructure]
+# pro-infra-01 ansible_host=172.16.4.31

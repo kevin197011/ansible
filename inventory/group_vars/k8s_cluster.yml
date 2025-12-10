@@ -1,0 +1,75 @@
+---
+# ============================================
+# Kubernetes 集群通用配置
+# ============================================
+
+# K8s 版本
+k8s_version: "1.28.0"
+
+# 集群网络配置
+k8s_pod_network_cidr: "10.244.0.0/16"
+k8s_service_cidr: "10.96.0.0/12"
+k8s_cluster_dns: "10.96.0.10"
+
+# API Server 配置
+k8s_apiserver_port: 6443
+
+# ============================================
+# etcd 配置
+# ============================================
+
+etcd_version: "v3.5.9"
+etcd_data_dir: "/var/lib/etcd"
+etcd_ssl_dir: "/etc/ssl/etcd"
+
+# ============================================
+# 网络插件配置
+# ============================================
+
+# CNI 插件选择: calico, flannel
+k8s_network_plugin: calico
+calico_version: "v3.26.1"
+
+# ============================================
+# CoreDNS 配置
+# ============================================
+
+coredns_version: "1.10.1"
+coredns_replicas: 2
+
+# ============================================
+# Ingress 配置
+# ============================================
+
+ingress_controller: nginx
+ingress_nginx_version: "1.8.1"
+
+# ============================================
+# 证书配置
+# ============================================
+
+# 证书有效期 (天)
+cert_validity_days: 3650
+
+# CFSSL 配置目录
+cfssl_config_dir: "/opt/k8s/ssl"
+
+# ============================================
+# 容器运行时
+# ============================================
+
+# 容器运行时: docker, containerd
+container_runtime: docker
+
+# ============================================
+# 镜像仓库配置
+# ============================================
+
+# K8s 组件镜像仓库
+k8s_image_registry: "registry.aliyuncs.com/google_containers"
+
+# 自定义私有仓库
+# private_registry: "harbor.example.com"
+# private_registry_username: ""
+# private_registry_password: ""
+

@@ -1,0 +1,45 @@
+---
+# ============================================
+# Ansible Collections 依赖
+# ============================================
+# 安装命令: ansible-galaxy install -r requirements.yml
+
+collections:
+  # 通用模块集合
+  - name: community.general
+    version: ">=8.0.0"
+
+  # VMware vSphere 模块
+  - name: community.vmware
+    version: ">=4.0.0"
+
+  # Docker 模块
+  - name: community.docker
+    version: ">=3.0.0"
+
+  # Kubernetes 模块
+  - name: kubernetes.core
+    version: ">=3.0.0"
+
+  # POSIX 模块 (用户、权限等)
+  - name: ansible.posix
+    version: ">=1.5.0"
+
+  # 加密模块
+  - name: community.crypto
+    version: ">=2.0.0"
+
+# ============================================
+# Ansible Roles 依赖 (可选)
+# ============================================
+# 如需使用外部角色，取消下面的注释
+
+# roles:
+#   # Docker 安装角色
+#   - name: geerlingguy.docker
+#     version: "6.1.0"
+#
+#   # Pip 安装角色
+#   - name: geerlingguy.pip
+#     version: "2.2.0"
+

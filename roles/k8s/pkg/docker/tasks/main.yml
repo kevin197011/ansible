@@ -1,7 +1,0 @@
----
-- name: Import check task
-  import_tasks: check.yml
-
-- name: Import run task
-  import_tasks: run.yml
-  when: not register_run_status.stat.exists

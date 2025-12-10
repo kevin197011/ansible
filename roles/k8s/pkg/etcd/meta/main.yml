@@ -1,3 +1,0 @@
-dependencies:
-#   - { name: "base", role: "system/base", tags: "base" }
-  - { name: "cfssl", role: "tools/cfssl", tags: "cfssl" }

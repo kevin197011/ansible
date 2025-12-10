@@ -1,8 +1,8 @@
 ---
 - name: Test playbook
-  hosts: [ "all", ]
+  hosts: ["all"]
   become: yes
   become_user: root
   gather_facts: no
   roles:
-    - { name: "test", role: "tools/base-role", tags: "test" }
+    - { name: "test", role: "_templates/base-role", tags: "test" }

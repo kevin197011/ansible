@@ -1,2 +1,0 @@
-dependencies:
-  - { name: "docker", role: "apps/docker", tags: "docker" }

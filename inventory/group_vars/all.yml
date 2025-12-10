@@ -1,1 +1,82 @@
 ---
+# ============================================
+# 全局通用配置
+# ============================================
+
+# 时区设置
+timezone: Asia/Shanghai
+
+# NTP 时间同步服务器
+ntp_servers:
+  - ntp.aliyun.com
+  - ntp1.aliyun.com
+  - time.windows.com
+
+# ============================================
+# 软件仓库配置
+# ============================================
+
+# YUM 仓库基础 URL
+yum_repo_base_url: "http://mirrors.aliyun.com/centos"
+yum_epel_repo_url: "http://mirrors.aliyun.com/epel"
+
+# ============================================
+# 系统配置
+# ============================================
+
+# SSH 配置
+ssh_port: 22
+ssh_permit_root_login: "yes"
+
+# 系统资源限制
+system_limits:
+  nofile_soft: 65535
+  nofile_hard: 65535
+  nproc_soft: 65535
+  nproc_hard: 65535
+
+# 内核参数优化
+sysctl_params:
+  net.ipv4.ip_forward: 1
+  net.bridge.bridge-nf-call-iptables: 1
+  net.bridge.bridge-nf-call-ip6tables: 1
+  vm.swappiness: 0
+  vm.max_map_count: 262144
+
+# ============================================
+# Docker 配置
+# ============================================
+
+docker_version: "24.0"
+docker_storage_driver: overlay2
+docker_log_driver: json-file
+docker_log_max_size: "100m"
+docker_log_max_file: "3"
+
+# Docker 镜像加速器
+docker_registry_mirrors:
+  - "https://registry.docker-cn.com"
+  - "https://docker.mirrors.ustc.edu.cn"
+
+# ============================================
+# 用户配置
+# ============================================
+
+# Ansible 管理用户
+ansible_user: root
+# ansible_user: ansible
+# ansible_become: true
+# ansible_become_method: sudo
+
+# ============================================
+# 目录配置
+# ============================================
+
+# 数据存储基础目录
+data_base_dir: /data
+
+# 日志存储基础目录
+log_base_dir: /var/log
+
+# 证书存储目录
+ssl_base_dir: /etc/ssl

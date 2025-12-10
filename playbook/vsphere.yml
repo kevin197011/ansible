@@ -1,8 +1,8 @@
 ---
 - name: Vsphere playbook
-  hosts: [ "all", ]
+  hosts: ["all"]
   become: yes
   become_user: root
   gather_facts: no
   roles:
-    - { name: "vsphere", role: "system/vsphere", tags: "vsphere" }
+    - { name: "vsphere", role: "virtualization/vsphere", tags: "vsphere" }

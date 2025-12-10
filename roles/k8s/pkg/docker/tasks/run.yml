@@ -1,9 +1,0 @@
----
-- name: Import install task
-  import_tasks: install.yml
-
-- name: Import config task
-  import_tasks: config.yml
-
-- name: Import state task
-  import_tasks: state.yml

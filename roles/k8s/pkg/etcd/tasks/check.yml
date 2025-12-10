@@ -1,9 +1,0 @@
----
-- name: Register run status
-  stat:
-    path: "/var/run/ansible/.{{ role_name | regex_replace('/', '.') }}.run"
-  register: register_run_status
-
-- name: Debug run status
-  debug:
-    msg: "{{ register_run_status.stat.exists }}"
